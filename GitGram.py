@@ -43,7 +43,7 @@ else:
 updater = Updater(token=BOT_TOKEN, workers=1)
 dispatcher = updater.dispatcher
 
-print("If you need more help, join @GitGramChat in Telegram for assistance.")
+print("successfully deployed bot")
 
 
 def start(_bot, update):
@@ -57,7 +57,7 @@ def help(_bot, update):
     """/help message for the bot"""
     message = update.effective_message
     message.reply_text(
-        f"*Available Commands*\n\n`/connect` - Setup how to connect this chat to receive Git activity notifications.\n`/support` - Get links to get support if you're stuck.\n`/source` - Get the Git repository URL.",
+        f"*Available Commands*\n\n`/connect` - Setup how to connect this chat to receive Git activity notifications.\n`/support` - Get links to get support if you're stuck.\n`.",
         parse_mode="markdown"
     )
 
@@ -69,18 +69,11 @@ def support(_bot, update):
         parse_mode="markdown"
     )
 
-def source(_bot, update):
-    """Link to Source"""
-    message = update.effective_message
-    message.reply_text(
-        f"*Source*:\n\nThis instance: {GIT_REPO_URL}",
-        parse_mode="markdown"
-    )
+
 
 start_handler = CommandHandler("start", start)
 help_handler = CommandHandler("help", help)
 supportCmd = CommandHandler("support", support)
-sourcecode = CommandHandler("source", source)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
